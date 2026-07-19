@@ -1,12 +1,18 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class ArrayformofInteger {
     public static void main(String[] args) {
+        int[] num = {1,2,0,3};
+        int k = 253;
+        System.out.println(addToArrayForm(num,k));
 
-        int[] num = {1,2,0,0};
-        int k  = 34;
+
+    }
+
+    static List<Integer> addToArrayForm(int[] num, int k) {
+       List<Integer>  list = new ArrayList<>();
+
         int sum = 0  ;
 
         for( int i = 0 ; i < num.length ; i++ ){
@@ -20,13 +26,12 @@ public class Main {
         String st = Integer.toString(sum3);
 
         for( int i = 0 ; i < st.length() ; i++ ){
-            char ch = st.charAt(i);
 
+            list.add(st.charAt(i) - '0');
         }
+
+        return list;
+
+
     }
 }
-
-
-
-
-
