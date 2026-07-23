@@ -5,28 +5,42 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        int[] num = {1,2,0,0};
-        int k  = 34;
-        int sum = 0  ;
 
-        for( int i = 0 ; i < num.length ; i++ ){
-            sum = (sum + num[i]) * 10 ;
-        }
+        int[] arr = { 4,3,2,7,8,2,3,1 };
 
-        int sum2  = sum / 10;
-        int sum3 = sum2 + k;
+        cyclicsort(arr);
+        System.out.println(arr);
 
-        //System.out.println(sum3);
-        String st = Integer.toString(sum3);
 
-        for( int i = 0 ; i < st.length() ; i++ ){
-            char ch = st.charAt(i);
-
-        }
     }
+ static List<Integer> cyclicsort(int[] nums ){
+
+
+     int index  = 0;
+     while( index < nums.length ){
+         int correct = nums[index] -1;
+
+         if( nums[index] != nums[correct] ){
+             int temp = nums[index];
+             nums[index] = nums[correct];
+             nums[correct] = temp;
+         }
+         else{
+             index ++ ;
+         }
+     }
+
+    List<Integer> ans = new ArrayList<>();
+
+     for( int i = 0; i < nums.length ; i ++){
+         if( nums[i] != i-1 ){
+             ans.add(i+1);
+         }
+     }
+
+     return ans;
+
+ }
+
 }
-
-
-
-
 

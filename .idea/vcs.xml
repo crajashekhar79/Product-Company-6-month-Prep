@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Library-Management-System-Searching-catalogues-in-library-using-binary-search-tree" vcs="Git" />
   </component>
 </project>
