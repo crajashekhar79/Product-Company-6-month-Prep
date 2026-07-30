@@ -1,17 +1,24 @@
 
 public class Reverse_num {
 
-    public static int rev_num(int num ){
+    public static int rev_num(int x ){
 
          int result = 0;
 
-         while( num != 0 ){
+         while( x != 0 ){
 
-             int last = num % 10;
+             int last = x % 10;
+
+             if(result > Integer.MAX_VALUE / 10 ||
+                     result < Integer.MIN_VALUE / 10 ||
+                     (result == Integer.MAX_VALUE / 10 && last > 7) ||
+                     (result == Integer.MIN_VALUE / 10 && last < -8)){
+                 return 0;
+             }
 
              result = (result * 10) + last;
 
-              num = num / 10 ;
+              x = x / 10 ;
 
 
 
