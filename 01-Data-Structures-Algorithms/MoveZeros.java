@@ -1,38 +1,36 @@
+import java.util.Arrays;
+
 public class MoveZeros {
     public static void main(String[] args) {
 
-        int[] arr = {5,8,9,16,32,42,48,52,67};
-        int target = 48;
-        int start =0;
-        int end = arr.length-1;
-        int mid = start + ( end - start )/2;
-        System.out.println(mid);
-        System.out.println(binarysearch(arr,target));
+        int[] arr = {-1,0,2,3,0,-5,8};
 
-
-
-
-
+        moveZeroes(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
-    static int binarysearch( int[] arr , int target){
+    static  void moveZeroes(int[] nums){
+          // The solution my brain gave
+          for( int i = 0 ;i < nums.length ; i++ ){
+              for( int j = i + 1; j< nums.length ; j++ ){
+                  if( nums[j] != 0 && nums[i] == 0 ){
+                      int temp = nums[i];
+                      nums[i] = nums[j];
+                      nums[j] = temp;
+                  }
+              }
+          }
+      // This one is the top answer on leetcode
+       /* int i = 0;
 
-        int start = 0;
-        int end = arr.length - 1;
-
-        while (start <= end){
-            int mid = start + ( end-start)/2;
-
-            if( target < arr[mid]){
-                end = mid - 1;
-            }else if ( target > arr[mid]){
-                start = mid + 1;
-
-            }else{
-                return mid;
+        for( int j = 0 ; j< nums.length ; j++ ){
+            if( nums[j] != 0 ){
+                int temp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = temp;
+       i++;
             }
-        }
-        return -1;
+        }*/
 
     }
 }
