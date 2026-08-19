@@ -7,60 +7,48 @@ import java.util.Scanner;
 public class Practice {
     public static void main(String[] args) {
 
-     int[] arr = {1,8,6,2,5,4,8,3,7};
-     System.out.println(maxArea(arr));
-     String ransomNote = "aa";
-     String magazine = "aab";
-        System.out.println(ransom(ransomNote,magazine));
+         skip("","baccdah");
+        System.out.println(skip("bchadha"));
+        System.out.println(skipApple("Bcadappledcg"));
 
     }
-
-    static  int maxArea( int[] height ){
-
-        int left = 0;
-        int right = height.length-1;
-
-        int area = 0;
-
-
-        while( left < right ){
-            int w = right - left ;
-            int h = Math.min(height[left] ,height[right]);
-
-            if( w * h > area ){
-                area = w * h;
-            }
-            if ( height[left] < height[right] ){
-                left++;
-            }
-            else {
-                right--;
-            }
-
+    // No return type here
+    static void skip( String p , String up ){
+        if( up.isEmpty() ){
+            System.out.println(p);
+            return;
         }
 
-        return area ;
+        char ch = up.charAt(0);
+        if( ch == 'a' ){
+            skip(p,up.substring(1));
 
+        }else{
+            skip(p+ch,up.substring(1));
+        }
     }
-
-    static boolean ransom( String ransomNote, String magazine ){
-
-        String ref ="";
-        //boolean ans ;
-        int i = 0;
-
-        while( i < magazine.length()){
-
-            if( ref.equals(ransomNote) ){
-                return true;
-
-            }
-
-            ref = ref+magazine.charAt(i);
-            i++;
+    // To return a String
+    static String skip( String up ){
+        if( up.isEmpty() ){
+            return "";
+        }
+        char ch = up.charAt(0);
+        if( ch == 'a' ){
+            return skip(up.substring(1));
+        }else{
+            return ch + skip(up.substring(1));
+        }
+    }
+   static String skipApple ( String up ){
+        if( up.isEmpty()){
+            return " ";
         }
 
-
-        return false;
-    }
+        if( up.startsWith("apple")){
+            return skipApple(up.substring(5));
+        }else{
+            return up.charAt(0) + skipApple(up.substring(1));
+        }
+   }
 }
+
