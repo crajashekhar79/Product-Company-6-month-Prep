@@ -10,6 +10,10 @@ public class Practice {
          skip("","baccdah");
         System.out.println(skip("bchadha"));
         System.out.println(skipApple("Bcadappledcg"));
+        int pn = 28;
+        System.out.println(checkPerfectNumber(pn));
+        System.out.println(Arrays.toString(getNoZeroIntegers(505)));
+        permutations("","abc");
 
     }
     // No return type here
@@ -50,5 +54,65 @@ public class Practice {
             return up.charAt(0) + skipApple(up.substring(1));
         }
    }
+    public static boolean checkPerfectNumber(int num) {
+        int sum = 0;
+        int i = 1;
+        while( i < num ){
+            if( num % i == 0 ){
+                sum = sum + i;
+                i++;
+            }else {
+                i++;
+            }
+        }
+        return sum == num;
+    }
+    public static int[] getNoZeroIntegers(int n) {
+       int a = 1;
+       int b = n - 1;
+       int[] result = new int[2];
+
+       while( a > n ){
+           int cura = a ;
+           int curb = b ;
+           while( cura > 0 ){
+               int last = cura % 10 ;
+               if( last == 0 ){
+                   a++;
+                   break;
+               }else {
+                   result[0] = a;
+               }
+               cura = cura / 10;
+           }
+           while( curb > 0 ){
+               int last = curb % 10 ;
+               if( last == 0 ){
+                   b--;
+                   break;
+               }else{
+                   result[1] = b;
+               }
+               curb = curb / 10;
+           }
+
+       }
+
+       return result;
+
+    }
+
+    static void permutations( String p , String up ){
+        if( up.isEmpty() ){
+            System.out.println(p);
+            return;
+        }
+        char ch = up.charAt(0);
+        for( int i = 0; i <= p.length() ; i++ ){
+            String f = p.substring(0,i);
+            String s = p.substring(i,p.length());
+            permutations(f+ch+s, up.substring(1));
+        }
+    }
 }
 
