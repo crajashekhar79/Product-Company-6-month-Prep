@@ -7,13 +7,9 @@ import java.util.Scanner;
 public class Practice {
     public static void main(String[] args) {
 
-         skip("","baccdah");
-        System.out.println(skip("bchadha"));
-        System.out.println(skipApple("Bcadappledcg"));
-        int pn = 28;
-        System.out.println(checkPerfectNumber(pn));
-        System.out.println(Arrays.toString(getNoZeroIntegers(505)));
-        permutations("","abc");
+        pad("","12");
+
+
 
     }
     // No return type here
@@ -112,6 +108,18 @@ public class Practice {
             String f = p.substring(0,i);
             String s = p.substring(i,p.length());
             permutations(f+ch+s, up.substring(1));
+        }
+    }
+
+    static void pad ( String p , String up ){
+        if( up.isEmpty() ){
+            System.out.println(p);
+            return;
+        }
+        int digit = up.charAt(0) - '0'; //converts '2' to 2
+        for( int i = (digit-1) * 3; i < digit * 3; i++ ){
+            char ch = (char)( 'a'+i );
+            pad( p + ch, up.substring(1) );
         }
     }
 }
