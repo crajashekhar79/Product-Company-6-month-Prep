@@ -9,6 +9,24 @@ public class Practice {
 
         pad("","12");
 
+        char[] ch = {'h','e','l','l','o'};
+
+        reversestring(ch,0,ch.length-1);
+
+        for( int i = 0; i < ch.length ; i++ ){
+            System.out.print(ch[i]+" ");
+        }
+        System.out.println();
+
+        System.out.println("Sum of digits :- "+sumofdigits(12345));
+
+        System.out.println("Number of zeros :- "+countnumofzeros(1020205));
+
+        System.out.println("Product of digits :- "+prodofdigits(523));
+
+        System.out.println("Reverse of a number :- "+reveresenum(1234,0));
+
+
 
 
     }
@@ -122,5 +140,61 @@ public class Practice {
             pad( p + ch, up.substring(1) );
         }
     }
+    static void reversestring( char[] s , int left , int right ){
+
+        if( left >= right ){
+            return;
+        }
+        char temp = s[left];
+        s[left ] = s[right];
+        s[right] = temp;
+        reversestring( s, left+1 ,right-1);
+
+
+    }
+    static int sumofdigits( int num ){
+        if( num == 0 ){
+            return 0;
+        }
+        int last = num % 10;
+        return  last + sumofdigits(num/10);
+
+    }
+
+    static int countnumofzeros( int num ){
+        if( num == 0 ){
+            return 0;
+        }
+
+        int last = num % 10;
+
+        if( last == 0){
+            return 1 + countnumofzeros(num/10);
+        }
+        else{
+            return countnumofzeros(num / 10);
+        }
+
+
+    }
+
+    static int prodofdigits( int num ){
+        if( num == 0 ){
+            return 1;
+        }
+        int last = num % 10;
+        return last * prodofdigits(num/10);
+    }
+
+    static int reveresenum( int num ,int rev ){
+
+        if( num == 0 ){
+            return rev;
+        }
+        int last = (num % 10) ;
+         rev = rev * 10 +last;
+        return   reveresenum(num/10,rev);
+    }
+
 }
 
