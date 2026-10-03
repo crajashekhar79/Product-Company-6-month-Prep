@@ -74,8 +74,13 @@ class LinkedList{
 
         if( head == null ){
             return;
-        }12
-        int c = 1;
+        }
+
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
         //int len = this.count();
         Node curr_nd = head;
 
@@ -84,10 +89,32 @@ class LinkedList{
                 break;
             }
             curr_nd = curr_nd.next;
-            c++;
+
         }
 
         curr_nd.next = null ;
+    }
+
+    void deleteatpos( int pos ){
+
+        if( pos == 0 ){
+            deleteatbeginning();
+            return;
+        }
+        else{
+              Node curr_node = head;
+
+              for( int i = 0 ; i < pos-1 ; i++ ){
+                  curr_node = curr_node.next;
+              }
+              System.out.println(curr_node.data);
+              curr_node.next = curr_node.next.next;
+
+
+
+        }
+
+
     }
 
 
@@ -130,15 +157,23 @@ public class LL{
         ll.insertAtBeginning(8);
         ll.insertAtBeginning(9);
         ll.insertAtBeginning(48);
+        ll.insertAtBeginning(25);
+        ll.insertAtBeginning(21);
 
         ll.insertAttheEnd((85));
         ll.insertAttheEnd(87);
+        ll.insertAttheEnd(45);
+        ll.insertAttheEnd(78);
+//
+//        ll.insertAtapos(45,1);
+//        ll.insertAtapos(67,0);
 
-        ll.insertAtapos(45,1);
-        ll.insertAtapos(67,0);
-
-        ll.deleteatbeginning();
-        ll.deleteatend();
+        //ll.deleteatbeginning();
+//        ll.deleteatend();
+        ll.deleteatpos(4);
+        ll.deleteatpos(5);
+        ll.deleteatpos(3);
+        ll.deleteatpos(1);
 
 
         System.out.println("No of nodes in the LinkedList :- "+ ll.count());
